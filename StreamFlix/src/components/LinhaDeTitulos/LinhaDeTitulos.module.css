@@ -1,0 +1,89 @@
+.listas {
+  margin-top: -100px;
+  padding-bottom: 20px;
+  background-color: #141414;
+}
+
+.linha-de-titulos {
+  margin-bottom: 30px;
+  padding-left: 40px;
+  background-color: transparent;
+}
+
+.linha-de-titulos h2 {
+  font-size: 1.5vw;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.linha-de-titulos--area-lista {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  background-color: transparent;
+  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.linha-de-titulos--area-lista::-webkit-scrollbar {
+  display: none;
+}
+
+.linha-de-titulos--lista {
+  display: flex;
+  width: fit-content;
+  background-color: transparent;
+}
+
+.cartao-titulo {
+  display: inline-block;
+  width: 250px;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s;
+  background-color: transparent !important;
+  border: none;
+  pointer-events: auto;
+}
+
+.cartao-titulo img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transform: scale(0.9);
+  transition: transform 0.2s;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.cartao-titulo:hover img {
+  transform: scale(1);
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.linha-de-titulos--area-lista:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 640px) {
+  .linha-de-titulos {
+    padding-left: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .linha-de-titulos h2 {
+    font-size: clamp(16px, 4vw, 20px);
+    margin-bottom: 12px;
+  }
+  
+  .cartao-titulo {
+    width: clamp(120px, 25vw, 180px);
+    margin-right: 6px;
+  }
+}

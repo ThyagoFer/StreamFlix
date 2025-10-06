@@ -1,0 +1,98 @@
+/* Footer.module.css - VERSÃO CORRIGIDA */
+
+.footer {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  color: #808080;
+  font-size: 13px;
+  background-color: #141414;
+}
+
+.footer-social {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-icone {
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.footer-icone:hover {
+  color: #b3b3b3;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 16px 32px;
+  margin-bottom: 24px;
+}
+
+.footer-coluna {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  min-width: 150px;
+  margin-right: 0;
+}
+
+.footer-coluna li {
+  margin-bottom: 16px;
+}
+
+.footer-coluna a {
+  color: #808080;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-coluna a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-codigo-servico {
+  background: transparent;
+  border: 1px solid #808080;
+  color: #808080;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.footer-codigo-servico:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.footer-copy {
+  font-size: 11px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 24px 16px 32px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+

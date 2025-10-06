@@ -1,0 +1,127 @@
+.destaque {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding-top: 150px;
+  margin-top: -68px;
+}
+
+.destaque-vertical {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to top, rgba(10,10,12,0.85) 0%, transparent 60%);
+}
+
+.destaque-horizontal {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.destaque-conteudo {
+  width: 50%;
+  margin-left: 40px;
+  margin-top: -68px;
+  background: rgba(18, 22, 28, 0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.destaque-conteudo h1 {
+  font-size: clamp(28px, 4vw, 64px);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.destaque-info {
+  font-size: clamp(12px, 1.2vw, 18px);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.destaque-pontuacao {
+  color: #46d369;
+  margin-right: 15px;
+}
+
+.destaque-descricao {
+  font-size: clamp(12px, 1.2vw, 18px);
+  color: #e5e5e5;
+  margin-bottom: 25px;
+  line-height: 1.3;
+}
+
+.destaque-botoes {
+  height: auto;
+  margin-top: 20px;
+}
+
+.destaque-botao {
+  font-size: clamp(12px, 1.2vw, 18px);
+  font-weight: bold;
+  padding: 10px 25px;
+  margin-right: 15px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .destaque {
+    height: 75vh;
+    padding-top: 120px;
+  }
+  .destaque-conteudo {
+    width: 60%;
+    margin-left: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .destaque {
+    background-size: cover;
+    background-position: top center;
+  }
+
+  .destaque-conteudo {
+    width: 92%;
+    padding: 12px 14px;
+    margin-top: 100px;
+  }
+
+  .destaque-conteudo h1 {
+    font-size: clamp(18px, 5vw, 28px);
+    margin-bottom: 6px;
+  }
+
+  .destaque-info {
+    font-size: clamp(11px, 2.5vw, 13px);
+    margin-bottom: 10px;
+  }
+
+  .destaque-descricao {
+    font-size: clamp(11px, 3vw, 13px);
+    line-height: 1.3;
+    margin-bottom: 12px;
+    padding: 0;
+  }
+
+  .destaque-botoes {
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .destaque-botao {
+    font-size: 12px;
+    padding: 6px 12px;
+    max-width: 140px;
+  }
+}

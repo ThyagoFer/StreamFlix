@@ -1,0 +1,31 @@
+.cartao-titulo {
+  display: inline-block;
+  width: clamp(140px, 18vw, 250px);
+  cursor: pointer;
+  margin-right: 8px;
+  transition: transform 0.3s;
+  background-color: transparent !important;
+  border: none;
+}
+
+.cartao-titulo img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transform: scale(0.9);
+  transition: transform 0.2s;
+  background-color: transparent;
+}
+
+@media (max-width: 640px) {
+  .cartao-titulo {
+    margin-right: 6px;
+    width: clamp(120px, 25vw, 180px);
+  }
+}
+
+.cartao-titulo:hover img {
+  transform: scale(1);
+  z-index: 10;
+  box-shadow: 0 6px 20px rgba(9, 198, 255, 0.25), 0 0 0 1px rgba(163, 224, 255, 0.2);
+}

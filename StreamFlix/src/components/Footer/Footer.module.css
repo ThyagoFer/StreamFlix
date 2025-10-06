@@ -1,5 +1,3 @@
-/* Footer.module.css - VERSÃO CORRIGIDA */
-
 .footer {
   max-width: 1160px;
   margin: 0 auto;
@@ -94,5 +92,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-

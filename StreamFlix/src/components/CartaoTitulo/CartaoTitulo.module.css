@@ -29,3 +29,42 @@
   z-index: 10;
   box-shadow: 0 6px 20px rgba(9, 198, 255, 0.25), 0 0 0 1px rgba(163, 224, 255, 0.2);
 }
+
+
+
+.cartao-titulo {
+    position: relative; 
+    cursor: pointer;
+}
+
+.botaoAdicionar {
+    position: absolute; 
+    top: 8px;           
+    right: 8px;         
+    
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;       
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 0; 
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+.cartao-titulo:hover .botaoAdicionar {
+    opacity: 1;
+}
+
+
+.botaoAdicionar:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.8);
+}

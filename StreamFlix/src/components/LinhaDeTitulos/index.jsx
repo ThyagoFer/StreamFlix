@@ -2,15 +2,15 @@ import { useRef, useEffect, useState } from "react";
 import CartaoTitulo from "../CartaoTitulo";
 import styles from "./LinhaDeTitulos.module.css";
 
-function LinhaDeTitulos({ titulo, itens }) {
-  const scrollRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [autoScrollDir, setAutoScrollDir] = useState(null);
-  const rafRef = useRef(null);
+function LinhaDeTitulos({ titulo, items = [] }) {
+    const scrollRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [autoScrollDir, setAutoScrollDir] = useState(null);
+    const rafRef = useRef(null);
 
-  const itensComPoster = itens.filter((item) => item.poster_path !== null);
+    const itensComPoster = items.filter((item) => item.poster_path !== null);
 
   useEffect(() => {
     const element = scrollRef.current;

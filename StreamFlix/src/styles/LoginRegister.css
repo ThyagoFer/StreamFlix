@@ -1,0 +1,125 @@
+.auth-container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9c5457b8-9ab0-4a04-9fc1-e609d5a37f71/a35518b8-6c08-48a6-82f6-82a355d0a42b/BR-pt-20220719-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.auth-logo-link {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 2rem;
+}
+
+.auth-logo-img {
+  width: 100%;
+  height: auto;
+}
+
+.form-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 60px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-box h1 {
+  color: #fff;
+  margin-bottom: 28px;
+  font-size: 2rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  background-color: #333;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.input-group input::placeholder {
+  color: #8c8c8c;
+}
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+.password-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.form-box button {
+  background-color: #e50914;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 24px;
+  padding: 15px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.form-box button:hover {
+  background-color: #f6121d;
+}
+
+.form-links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #8c8c8c;
+}
+
+.form-links-container a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.form-links-container a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 740px) {
+  .form-box {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  .auth-container {
+    background: #000;
+  }
+}

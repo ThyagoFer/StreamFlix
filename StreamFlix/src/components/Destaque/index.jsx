@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styles from "./Destaque.module.css";
 import { FaPlay } from "react-icons/fa";
 import { MdFilterListAlt } from "react-icons/md";
@@ -6,8 +7,8 @@ import { useMinhaLista } from "../../context/MinhaListaContext";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/";
 
 const Destaque = ({ item }) => {
-    
-    const { adicionarFilme } = useMinhaLista();
+    const navigate = useNavigate();
+    const { adicionarFilme, lista } = useMinhaLista();
 
     if (!item) return null;
 
@@ -28,10 +29,15 @@ const Destaque = ({ item }) => {
         ? item.first_air_date.substring(0, 4)
         : item.release_date?.substring(0, 4);
 
+    const isNaLista = lista.some(listaItem => listaItem.id === item.id);
     
     const handleAdicionarNaLista = () => {
         adicionarFilme(item); 
-        alert(`'${titulo}' foi adicionado à sua lista!`); 
+    }
+
+    const handleAssistir = () => {
+        const tipo = item.media_type || (item.first_air_date ? 'tv' : 'movie');
+        navigate(`/detalhes/${tipo}/${item.id}`);
     }
 
     return (
@@ -51,6 +57,7 @@ const Destaque = ({ item }) => {
                         <p className={styles["destaque-descricao"]}>{sinopseCurta}</p>
                         <div className={styles["destaque-botoes"]}>
                             <button
+                                onClick={handleAssistir}
                                 className={`${styles["destaque-botao"]} ${styles["destaque-assistir"]}`}
                             >
                                 <FaPlay /> Assistir
@@ -58,9 +65,9 @@ const Destaque = ({ item }) => {
                             
                             <button
                                 onClick={handleAdicionarNaLista}
-                                className={`${styles["destaque-botao"]} ${styles["destaque-lista"]}`}
+                                className={`${styles["destaque-botao"]} ${styles["destaque-lista"]} ${isNaLista ? styles.naLista : ''}`}
                             >
-                                <MdFilterListAlt /> Minha Lista
+                                <MdFilterListAlt /> {isNaLista ? 'Na Lista' : 'Minha Lista'}
                             </button>
                         </div>
                     </div>

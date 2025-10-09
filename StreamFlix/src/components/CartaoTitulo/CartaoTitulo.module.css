@@ -68,3 +68,12 @@
     transform: scale(1.1);
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+.botaoAdicionar.naLista {
+    background-color: rgba(229, 9, 20, 0.8);
+    color: white;
+}
+
+.botaoAdicionar.naLista:hover {
+    background-color: rgba(229, 9, 20, 1);
+}

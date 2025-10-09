@@ -73,6 +73,15 @@
   gap: 8px;
 }
 
+.destaque-lista.naLista {
+  background: #e50914;
+  color: white;
+}
+
+.destaque-lista.naLista:hover {
+  background: #b8070f;
+}
+
 @media (max-width: 900px) {
   .destaque {
     height: 75vh;

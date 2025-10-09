@@ -11,6 +11,10 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import MinhaLista from './pages/MinhaLista.jsx';
+import Detalhes from './pages/Detalhes.jsx';
+import Busca from './pages/Busca.jsx';
+import Filmes from './pages/Filmes.jsx';
+import Series from './pages/Series.jsx';
 import MinhaListaProvider from './context/MinhaListaContext.jsx';
 import './index.css';
 
@@ -38,6 +42,22 @@ const router = createBrowserRouter([
       {
         path: "/minha-lista",
         element: <MinhaLista />,
+      },
+      {
+        path: "/busca",
+        element: <Busca />,
+      },
+      {
+        path: "/filmes",
+        element: <Filmes />,
+      },
+      {
+        path: "/series",
+        element: <Series />,
+      },
+      {
+        path: "/detalhes/:tipo/:id",
+        element: <Detalhes />,
       },
     ]
   }

@@ -1,0 +1,376 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0c 0%, #1a1a1a 100%);
+  color: white;
+  padding-top: 80px;
+}
+
+.header {
+  padding: 40px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #a3e0ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.buscaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.inputBusca {
+  width: 100%;
+  padding: 15px 50px 15px 50px;
+  font-size: 1.1rem;
+  border: 2px solid rgba(163, 224, 255, 0.3);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.inputBusca:focus {
+  outline: none;
+  border-color: #a3e0ff;
+  box-shadow: 0 0 20px rgba(163, 224, 255, 0.3);
+}
+
+.inputBusca::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.iconeBusca {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: rgba(163, 224, 255, 0.7);
+}
+
+.btnLimpar {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.btnLimpar:hover {
+  color: #a3e0ff;
+  background: rgba(163, 224, 255, 0.1);
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filtro {
+  padding: 10px 20px;
+  border: 2px solid rgba(163, 224, 255, 0.3);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.filtro:hover {
+  border-color: #a3e0ff;
+  background: rgba(163, 224, 255, 0.1);
+}
+
+.filtro.ativo {
+  background: linear-gradient(45deg, #a3e0ff, #4fc3f7);
+  color: #0a0a0c;
+  border-color: #a3e0ff;
+}
+
+.resultados {
+  padding: 0 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  color: white;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(163, 224, 255, 0.3);
+  border-top: 3px solid #a3e0ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.semResultados {
+  text-align: center;
+  padding: 60px 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contador {
+  margin-bottom: 30px;
+  color: #a3e0ff;
+  font-size: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: rgba(163, 224, 255, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.posterContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.poster {
+  width: 100%;
+  height: 375px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .poster {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.btnLista {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #a3e0ff;
+  color: #a3e0ff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.btnLista:hover {
+  background: #a3e0ff;
+  color: #0a0a0c;
+  transform: scale(1.1);
+}
+
+.btnLista.naLista {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+}
+
+.info {
+  padding: 20px;
+}
+
+.info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #a3e0ff;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.tipo, .ano {
+  background: rgba(163, 224, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  color: #a3e0ff;
+}
+
+.avaliacao {
+  color: #ffd700;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.placeholder {
+  text-align: center;
+  padding: 100px 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.iconePlaceholder {
+  font-size: 4rem;
+  color: rgba(163, 224, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+.placeholder h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #a3e0ff;
+}
+
+.placeholder p {
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .inputBusca {
+    padding: 12px 45px 12px 45px;
+    font-size: 1rem;
+  }
+
+  .iconeBusca {
+    left: 15px;
+    font-size: 1rem;
+  }
+
+  .btnLimpar {
+    right: 12px;
+    font-size: 1rem;
+  }
+
+  .filtros {
+    gap: 8px;
+  }
+
+  .filtro {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .resultados {
+    padding: 0 20px 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .poster {
+    height: 300px;
+  }
+
+  .info {
+    padding: 15px;
+  }
+
+  .info h3 {
+    font-size: 1rem;
+  }
+
+  .placeholder {
+    padding: 60px 20px;
+  }
+
+  .placeholder h2 {
+    font-size: 1.5rem;
+  }
+
+  .placeholder p {
+    font-size: 1rem;
+  }
+}
+
+

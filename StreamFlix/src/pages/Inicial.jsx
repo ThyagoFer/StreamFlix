@@ -1,7 +1,6 @@
 
 
 import { useState, useEffect } from "react";
-// Eu REMOVI o Header e Footer dos imports
 import Destaque from "../components/Destaque";
 import LinhaDeTitulos from "../components/LinhaDeTitulos";
 import { SlReload } from "react-icons/sl";

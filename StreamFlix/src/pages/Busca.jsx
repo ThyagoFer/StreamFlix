@@ -20,7 +20,7 @@ export default function Busca() {
   const [termoBusca, setTermoBusca] = useState('');
   const [resultados, setResultados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [filtro, setFiltro] = useState('all'); // all, movie, tv
+  const [filtro, setFiltro] = useState('all');
   const navigate = useNavigate();
   const { lista, adicionarFilme, removerFilme } = useMinhaLista();
 
@@ -51,8 +51,7 @@ export default function Busca() {
 
       const response = await fetch(url, API_OPTIONS);
       const data = await response.json();
-      
-      // Filtrar resultados se necessário
+
       let resultadosFiltrados = data.results || [];
       
       if (filtro === 'all') {

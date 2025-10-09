@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom"; // <--- CORRIGIDO AQUI
+} from "react-router-dom";
 
 import Layout from './components/Layout';
 import Inicial from './pages/Inicial.jsx';

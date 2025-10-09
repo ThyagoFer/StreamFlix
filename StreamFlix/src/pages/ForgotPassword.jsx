@@ -11,7 +11,7 @@ function ForgotPassword() {
   const handleRecovery = (e) => {
     e.preventDefault();
     if (!email) {
-      setMessage('Por favor, digite seu email.');
+      setMessage('E-mail');
       setIsSuccess(false);
       return;
     }
@@ -20,11 +20,9 @@ function ForgotPassword() {
     const user = users.find(user => user.email === email);
 
     if (user) {
-      // Se encontrou o usuário, define a mensagem de sucesso
       setMessage(`Sua senha é: ${user.password}`);
       setIsSuccess(true);
     } else {
-      // Se não encontrou, define a mensagem de erro
       setMessage('Email não encontrado em nosso sistema.');
       setIsSuccess(false);
     }
@@ -49,7 +47,6 @@ function ForgotPassword() {
           <button type="submit" className="submit-btn">Recuperar</button>
         </form>
         
-        {/* Este bloco agora exibe a mensagem (sucesso ou erro) abaixo do formulário */}
         {message && (
           <p className={isSuccess ? 'success-message' : 'error-message'}>
             {message}

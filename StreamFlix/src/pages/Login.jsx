@@ -6,7 +6,7 @@ import logoImage from '../assets/logo.png';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(''); // Mensagens reativadas
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -40,7 +40,7 @@ function Login() {
               id="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Insira o nome de usuário"
+              placeholder="E-mail"
             />
           </div>
           <div className="input-group">
@@ -49,12 +49,12 @@ function Login() {
               id="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Favor digitar a senha"
+              placeholder="Senha"
             />
           </div>
           <button type="submit">Entrar</button>
         </form>
-        {/* A linha abaixo irá mostrar o que está acontecendo */}
+
         {error && <p className="error-message">{error}</p>}
         
         <div className="form-links-container">

@@ -6,7 +6,7 @@ import logoImage from '../assets/logo.png';
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState(''); // Mensagens reativadas
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -24,7 +24,7 @@ function Register() {
     const newUser = { email, password };
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
-    setMessage('Cadastro realizado com sucesso! Redirecionando...');
+    setMessage('Cadastro realizado com sucesso!');
     setTimeout(() => {
       navigate('/');
     }, 2000);
@@ -45,7 +45,7 @@ function Register() {
               id="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Digite seu melhor email" 
+              placeholder="E-mail" 
             />
           </div>
           <div className="input-group">
@@ -54,12 +54,12 @@ function Register() {
               id="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Crie uma senha forte" 
+              placeholder="Senha" 
             />
           </div>
           <button type="submit">Cadastrar</button>
         </form>
-        {/* A linha abaixo irá mostrar o que está acontecendo */}
+
         {message && <p className="error-message">{message}</p>}
         <div className="form-links-container">
             <Link to="/">Já tem uma conta? Entrar agora.</Link>

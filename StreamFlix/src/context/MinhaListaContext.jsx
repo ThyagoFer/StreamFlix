@@ -1,6 +1,4 @@
-
-
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 
 export const MinhaListaContext = createContext();
 

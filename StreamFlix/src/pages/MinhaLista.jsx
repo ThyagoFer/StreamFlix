@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMinhaLista } from '../context/MinhaListaContext';
 import { GoHeartFill, GoTrash } from 'react-icons/go';

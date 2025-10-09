@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import Destaque from "../components/Destaque";
 import LinhaDeTitulos from "../components/LinhaDeTitulos";

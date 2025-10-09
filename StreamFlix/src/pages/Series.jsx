@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMinhaLista } from '../context/MinhaListaContext';
 import { GoHeart, GoHeartFill } from 'react-icons/go';

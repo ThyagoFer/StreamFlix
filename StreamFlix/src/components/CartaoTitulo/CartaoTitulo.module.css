@@ -30,8 +30,6 @@
   box-shadow: 0 6px 20px rgba(9, 198, 255, 0.25), 0 0 0 1px rgba(163, 224, 255, 0.2);
 }
 
-
-
 .cartao-titulo {
     position: relative; 
     cursor: pointer;
@@ -58,11 +56,9 @@
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-
 .cartao-titulo:hover .botaoAdicionar {
     opacity: 1;
 }
-
 
 .botaoAdicionar:hover {
     transform: scale(1.1);

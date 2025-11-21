@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginRegister.css';
 import logoImage from '../assets/logo.png';
+import { apiLogin } from '../service/api';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -9,19 +10,21 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
     if (!email || !password) {
       setError('Por favor, preencha todos os campos.');
       return;
     }
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.email === email && user.password === password);
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+
+    const result = await apiLogin(email, password);
+
+    if (result.access) {
+      localStorage.setItem('token', result.access);
       navigate('/home');
     } else {
-      setError('Email ou senha inválidos.');
+      setError(result.detail || 'Email ou senha inválidos.');
     }
   };
 
@@ -37,7 +40,6 @@ function Login() {
           <div className="input-group">
             <input 
               type="email" 
-              id="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail"
@@ -46,7 +48,6 @@ function Login() {
           <div className="input-group">
             <input 
               type="password" 
-              id="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Senha"

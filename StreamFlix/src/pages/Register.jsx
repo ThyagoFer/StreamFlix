@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginRegister.css';
 import logoImage from '../assets/logo.png';
+import { apiRegister } from '../service/api';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -9,25 +10,22 @@ function Register() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+
     if (!email || !password) {
       setMessage('Por favor, preencha todos os campos.');
       return;
     }
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = users.find(user => user.email === email);
-    if (userExists) {
-      setMessage('Este email já está cadastrado.');
-      return;
+
+    const result = await apiRegister(email, password);
+
+    if (result.success) {
+      setMessage('Cadastro realizado com sucesso!');
+      setTimeout(() => navigate('/'), 1500);
+    } else {
+      setMessage(result.detail || 'Erro ao realizar cadastro.');
     }
-    const newUser = { email, password };
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    setMessage('Cadastro realizado com sucesso!');
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
   };
 
   return (
@@ -42,7 +40,6 @@ function Register() {
           <div className="input-group">
             <input 
               type="email" 
-              id="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)}
               placeholder="E-mail" 
@@ -51,7 +48,6 @@ function Register() {
           <div className="input-group">
             <input 
               type="password" 
-              id="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Senha" 

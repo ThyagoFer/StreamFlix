@@ -74,18 +74,14 @@ export default function Series() {
 
   const handleToggleLista = (e, serie) => {
     e.stopPropagation();
-    const isNaLista = lista.some(item => item.id === serie.id);
-    
-    if (isNaLista) {
+    if (isNaLista(serie)) {
       removerFilme(serie.id);
     } else {
       adicionarFilme(serie);
     }
   };
 
-  const isNaLista = (serie) => {
-    return lista.some(item => item.id === serie.id);
-  };
+  const isNaLista = (serie) => lista.some(item => item.tmdb_id === serie.id);
 
   if (isLoading) {
     return (

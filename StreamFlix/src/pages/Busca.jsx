@@ -76,7 +76,7 @@ export default function Busca() {
 
   const handleToggleLista = (e, conteudo) => {
     e.stopPropagation();
-    const isNaLista = lista.some(item => item.id === conteudo.id);
+    const isNaLista = lista.some(item => item.tmdb.id === conteudo.id);
     
     if (isNaLista) {
       removerFilme(conteudo.id);

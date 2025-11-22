@@ -1,52 +1,54 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import {
-  apiMinhaLista,
-  apiAddToMinhaLista,
-  apiRemoveFromMinhaLista
-} from '../service/api';
+import { apiMinhaLista, apiAddToMinhaLista, apiRemoveFromMinhaLista } from '../service/api';
 
 export const MinhaListaContext = createContext();
 
 export default function MinhaListaProvider({ children }) {
   const [lista, setLista] = useState([]);
-  const token = localStorage.getItem("token");
+
+  const carregarLista = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setLista([]);
+      return;
+    }
+    try {
+      const data = await apiMinhaLista(token);
+      if (data.detail || !Array.isArray(data)) {
+        setLista([]);
+        localStorage.removeItem("token");
+        localStorage.removeItem("currentUser");
+      } else {
+        setLista(data);
+      }
+    } catch {
+      setLista([]);
+    }
+  };
 
   useEffect(() => {
-    if (token) {
-      apiMinhaLista(token).then(data => {
-        if (Array.isArray(data)) {
-          setLista(data);
-        }
-      });
+    carregarLista();
+    const interval = setInterval(carregarLista, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const adicionarFilme = async (conteudo) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+    try {
+      await apiAddToMinhaLista(token, conteudo.id);
+      carregarLista();
+    } catch (err) {
+      console.error(err);
     }
-  }, [token]);
+  };
 
-  function adicionarFilme(conteudo) {
+  const removerFilme = async (tmdb_id) => {
+    const token = localStorage.getItem("token");
     if (!token) return;
-
-    const payload = {
-      tmdb_id: conteudo.id,
-      title: conteudo.title || conteudo.name,
-      poster_path: conteudo.poster_path,
-      media_type: conteudo.media_type || (conteudo.first_air_date ? "tv" : "movie"),
-      vote_average: conteudo.vote_average,
-      release_date: conteudo.release_date || conteudo.first_air_date
-    };
-
-    apiAddToMinhaLista(token, conteudo.id).then(novoRegistro => {
-          if (novoRegistro && !novoRegistro.detail) {
-            setLista(prev => [...prev, novoRegistro]);
-        }
-      });
-  }
-
-  function removerFilme(tmdb_id) {
-    if (!token) return;
-
-    apiRemoveFromMinhaLista(token, tmdb_id).then(() => {
-      setLista(prev => prev.filter(item => item.tmdb_id !== tmdb_id));
-    });
-  }
+    await apiRemoveFromMinhaLista(token, tmdb_id);
+    carregarLista();
+  };
 
   return (
     <MinhaListaContext.Provider value={{ lista, adicionarFilme, removerFilme }}>
@@ -55,6 +57,4 @@ export default function MinhaListaProvider({ children }) {
   );
 }
 
-export function useMinhaLista() {
-  return useContext(MinhaListaContext);
-}
+export const useMinhaLista = () => useContext(MinhaListaContext);

@@ -73,15 +73,17 @@ export default function Busca() {
     const tipo = conteudo.media_type || (conteudo.first_air_date ? 'tv' : 'movie');
     navigate(`/detalhes/${tipo}/${conteudo.id}`);
   };
-
+  
   const handleToggleLista = (e, conteudo) => {
     e.stopPropagation();
-    const isNaLista = lista.some(item => item.tmdb.id === conteudo.id);
     
+    const tipo = conteudo.media_type || (conteudo.first_air_date ? "tv" : "movie");
+    const isNaLista = lista.some(item => item.tmdb_id === conteudo.id);
+  
     if (isNaLista) {
       removerFilme(conteudo.id);
     } else {
-      adicionarFilme(conteudo);
+      adicionarFilme({ ...conteudo, media_type: tipo });
     }
   };
 

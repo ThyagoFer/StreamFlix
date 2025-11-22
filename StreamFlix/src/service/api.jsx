@@ -18,26 +18,23 @@ export async function apiRegister(email, password) {
 
 export async function apiMinhaLista(token) {
     return fetch(`${API_URL}/me/list/`, {
-        headers: { 
-            "Authorization": `Bearer ${token}` 
-        },
+        headers: { "Authorization": `Bearer ${token}` },
     }).then(r => r.json());
 }
 
 export async function apiAddToMinhaLista(token, id) {
     return fetch(`${API_URL}/me/list/add/${id}/`, {
         method: "POST",
-        headers: { 
-            "Authorization": `Bearer ${token}`
-        }
-    }).then(r => r.json());
+        headers: { "Authorization": `Bearer ${token}` }
+    }).then(r => {
+        if (!r.ok) throw new Error("Erro ao adicionar");
+        return r.json();
+    });
 }
 
 export async function apiRemoveFromMinhaLista(token, id) {
     return fetch(`${API_URL}/me/list/remove/${id}/`, {
         method: "DELETE",
-        headers: { 
-            "Authorization": `Bearer ${token}`
-        }
+        headers: { "Authorization": `Bearer ${token}` }
     }).then(r => r.json());
 }

@@ -12,7 +12,6 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     if (!email || !password) {
       setError('Por favor, preencha todos os campos.');
       return;
@@ -22,6 +21,10 @@ function Login() {
 
     if (result.access) {
       localStorage.setItem('token', result.access);
+      localStorage.setItem('currentUser', JSON.stringify({
+        name: result.user?.name || email.split('@')[0],
+        email: email
+      }));
       navigate('/home');
     } else {
       setError(result.detail || 'Email ou senha inválidos.');
@@ -59,10 +62,9 @@ function Login() {
         {error && <p className="error-message">{error}</p>}
         
         <div className="form-links-container">
-            <span>Novo por aqui? <Link to="/register">Assine agora.</Link></span>
-            <Link to="/forgot-password">Esqueceu a senha?</Link>
+          <span>Novo por aqui? <Link to="/register">Assine agora.</Link></span>
+          <Link to="/forgot-password">Esqueceu a senha?</Link>
         </div>
-
       </div>
     </div>
   );
